@@ -1,3 +1,5 @@
+package be.pxl.computerstore.hardware;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

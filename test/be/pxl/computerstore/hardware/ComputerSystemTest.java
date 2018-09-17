@@ -1,3 +1,5 @@
+package be.pxl.computerstore.hardware;
+
 import be.pxl.computerstore.util.TooManyPeripheralsException;
 import org.junit.Test;
 
