@@ -1,6 +1,7 @@
 package be.pxl.computerstore.hardware;
 
 import be.pxl.computerstore.util.Computable;
+import be.pxl.computerstore.util.TooManyPeripheralsException;
 
 public class ComputerSystem implements Computable {
 
@@ -43,8 +44,9 @@ public class ComputerSystem implements Computable {
         }
 
         if (!isPresent(peripheral)) {
-            if (getFreeLocation() != -1) {
-                peripherals[getFreeLocation()] = peripheral;
+            int freeLocation = getFreeLocation();
+            if (freeLocation != -1) {
+                peripherals[freeLocation] = peripheral;
             } else {
 //                System.out.println("You cannot add more than 3 peripherals!");
                 throw new TooManyPeripheralsException("You've reached the limit of peripherals!");
@@ -53,8 +55,8 @@ public class ComputerSystem implements Computable {
     }
 
     private boolean isPresent(Peripheral p) {
-        for (int i = 0; i < peripherals.length; i++) {
-            if (p.equals(peripherals[i])) {
+        for (Peripheral peripheral : peripherals) {
+            if (p.equals(peripheral)) {
                 return true;
             }
         }
@@ -70,34 +72,21 @@ public class ComputerSystem implements Computable {
         return -1;
     }
 
-
-    public int getNumberOfPeripherals() {
-        int counter = 0;
-        for (int i = 0; i < peripherals.length; i++) {
-            if (peripherals[i] != null) {
-                counter++;
-            }
-        }
-        return counter;
+    public Peripheral[] getPeripherals() {
+        return peripherals;
     }
 
-
     @Override
-    //TODO: check the exercise, this method needs to be implemented!
     public double totalPriceExcl() {
         double mainComponentsPrice = this.processor.getPrice() + this.hardDisk.getPrice() + this.computerCase.getPrice();
         double peripheralsPrice = 0;
 
-        for (int i = 0; i < peripherals.length; i++) {
-            if (peripherals[i] != null) {
-                peripheralsPrice = +peripherals[i].getPrice();
+        for (Peripheral peripheral : peripherals) {
+            if (peripheral != null) {
+                peripheralsPrice = +peripheral.getPrice();
             }
         }
         return mainComponentsPrice + peripheralsPrice;
     }
 
-    @Override
-    public double totalPriceIncl() {
-        return 0;
-    }
 }

@@ -35,6 +35,10 @@ public class ComputerComponent {
         this.price = price;
     }
 
+    public String getArticleNumber() {
+        return articleNumber;
+    }
+
     private void createAndSetArticleNumber(String vendor) {
 
         while (vendor.length() < 3) {
@@ -63,10 +67,17 @@ public class ComputerComponent {
         return name + " (" + articleNumber + ") ";
     }
 
-    public void getFullDescription() {
-        System.out.printf("ArticleNumber = %s %n" +
-                "Vendor = %s %n" +
-                "Name = %s %n" +
-                "Price = %.2f %n", this.articleNumber, this.vendor, this.name, this.price);
+//    public void getFullDescription() {
+//        System.out.printf("ArticleNumber = %s %n" +
+//                "Vendor = %s %n" +
+//                "Name = %s %n" +
+//                "Price = %.2f %n", this.articleNumber, this.vendor, this.name, this.price);
+//    }
+
+    public String getFullDescription() {
+        return "ArticleNumber = " + this.articleNumber + "\n " +
+                "Vendor = " + this.vendor + "\n " +
+                "Name = " + this.name + "\n " +
+                "Price = " + this.price + "\n ";
     }
 }

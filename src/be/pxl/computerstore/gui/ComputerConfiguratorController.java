@@ -2,6 +2,7 @@ package be.pxl.computerstore.gui;
 
 import be.pxl.computerstore.data.ComputerComponentTypes;
 import be.pxl.computerstore.data.Warehouse;
+import be.pxl.computerstore.hardware.*;
 import be.pxl.computerstore.util.TooManyPeripheralsException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -79,7 +80,7 @@ public class ComputerConfiguratorController implements Initializable {
             try {
                 computerSystem.addPeripheral((Peripheral) component);
             } catch (TooManyPeripheralsException e) {
-                informationBox.setContentText("Only " + computerSystem.getNumberOfPeripherals() + " peripherals allowed.");
+                informationBox.setContentText("Only " + computerSystem.getPeripherals() + " peripherals allowed.");
                 informationBox.show();
             }
         }
@@ -97,7 +98,8 @@ public class ComputerConfiguratorController implements Initializable {
         if (computerSystem.getHardDisk() != null) {
             items.add(computerSystem.getHardDisk());
         }
-        for (int i = 0; i < computerSystem.getNumberOfPeripherals(); i++) {
+        //TODO: CHECK! added .lengh
+        for (int i = 0; i < computerSystem.getPeripherals().length; i++) {
             items.add(computerSystem.getPeripherals()[i]);
         }
         totalPriceLabel.setText(String.valueOf(computerSystem.totalPriceIncl()));

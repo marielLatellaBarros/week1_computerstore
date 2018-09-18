@@ -1,5 +1,8 @@
 package be.pxl.computerstore.hardware;
 
+import be.pxl.computerstore.hardware.builder.ComputerCaseBuilder;
+import be.pxl.computerstore.hardware.builder.MouseBuilder;
+import be.pxl.computerstore.hardware.builder.ProcessorBuilder;
 import be.pxl.computerstore.util.TooManyPeripheralsException;
 import org.junit.Test;
 
@@ -37,16 +40,16 @@ public class ComputerSystemTest {
 	@Test
 	public void addPeripheralIncreasesNumberOfPeripherals() throws TooManyPeripheralsException {
 		ComputerSystem computerSystem = new ComputerSystem();
-		int countBefore = computerSystem.getNumberOfPeripherals();
+		int countBefore = computerSystem.getPeripherals();
 		Mouse mouse = new MouseBuilder().build();
 		computerSystem.addPeripheral(mouse);
-		assertEquals(countBefore + 1, computerSystem.getNumberOfPeripherals());
+		assertEquals(countBefore + 1, computerSystem.getPeripherals());
 	}
 	
 	@Test
 	public void initialNumberOfPeripheralsIsZero() {
 		ComputerSystem computerSystem = new ComputerSystem();
-		assertEquals(0, computerSystem.getNumberOfPeripherals());
+		assertEquals(0, computerSystem.getPeripherals());
 	}
 	
 	@Test
@@ -64,18 +67,18 @@ public class ComputerSystemTest {
 		ComputerSystem computerSystem = new ComputerSystem();
 		Mouse mouse = new MouseBuilder().build();
 		computerSystem.addPeripheral(mouse);
-		int countBefore = computerSystem.getNumberOfPeripherals();
+		int countBefore = computerSystem.getPeripherals();
 		computerSystem.removePeripheral(mouse.getArticleNumber());
-		assertEquals(countBefore - 1, computerSystem.getNumberOfPeripherals());
+		assertEquals(countBefore - 1, computerSystem.getPeripherals());
 	}
 	
 	@Test
 	public void removePeripheralNumberOfPeripheralsNotChangedIfPeripheralNotAvailable() throws TooManyPeripheralsException {
 		ComputerSystem computerSystem = new ComputerSystem();
 		Mouse mouse = new MouseBuilder().build();
-		int countBefore = computerSystem.getNumberOfPeripherals();
+		int countBefore = computerSystem.getPeripherals();
 		computerSystem.removePeripheral(mouse.getArticleNumber());
-		assertEquals(countBefore, computerSystem.getNumberOfPeripherals());
+		assertEquals(countBefore, computerSystem.getPeripherals());
 	}
 	
 	@Test(expected=TooManyPeripheralsException.class)

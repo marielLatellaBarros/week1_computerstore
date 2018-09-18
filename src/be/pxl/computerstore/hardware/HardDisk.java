@@ -8,4 +8,8 @@ public class HardDisk extends ComputerComponent {
         super(vendor, name, price);
         this.capacity = capacity;
     }
+
+    public int getCapacity() {
+        return capacity;
+    }
 }

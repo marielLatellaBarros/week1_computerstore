@@ -33,9 +33,13 @@ public class Processor extends ComputerComponent {
                 '}';
     }
 
-    public void getFullDescription() {
-        super.getFullDescription();
-        System.out.printf("Clock speed = %.2fGhz%n", this.clockspeed);
+//    public void getFullDescription() {
+////        super.getFullDescription();
+////        System.out.printf("Clock speed = %.2fGhz%n", this.clockspeed);
+////    }
+
+    public String getFullDescription() {
+        return super.getFullDescription() + " Clock speed = " + this.clockspeed;
     }
 
 
