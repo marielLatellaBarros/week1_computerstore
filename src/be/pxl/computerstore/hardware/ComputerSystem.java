@@ -1,6 +1,8 @@
 package be.pxl.computerstore.hardware;
 
-public class ComputerSystem {
+import be.pxl.computerstore.util.Computable;
+
+public class ComputerSystem implements Computable {
 
     public static int MAX_PERIPHERAL = 3;
     private Processor processor;
@@ -80,4 +82,22 @@ public class ComputerSystem {
     }
 
 
+    @Override
+    //TODO: check the exercise, this method needs to be implemented!
+    public double totalPriceExcl() {
+        double mainComponentsPrice = this.processor.getPrice() + this.hardDisk.getPrice() + this.computerCase.getPrice();
+        double peripheralsPrice = 0;
+
+        for (int i = 0; i < peripherals.length; i++) {
+            if (peripherals[i] != null) {
+                peripheralsPrice = +peripherals[i].getPrice();
+            }
+        }
+        return mainComponentsPrice + peripheralsPrice;
+    }
+
+    @Override
+    public double totalPriceIncl() {
+        return 0;
+    }
 }
