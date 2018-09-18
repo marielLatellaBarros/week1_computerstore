@@ -3,6 +3,8 @@ package be.pxl.computerstore.hardware;
 
 import be.pxl.computerstore.util.Dimension;
 
+import java.security.Key;
+
 public class TestApp {
     public static void main(String[] args) {
 
@@ -18,5 +20,21 @@ public class TestApp {
 //        System.out.println(processor1);
 //        System.out.println(Processor.getMinClockspeed());
         processor1.getFullDescription();
+
+        System.out.println();
+
+
+        Mouse mouse1 = new Mouse("HP", "X100", 15.44);
+        System.out.println(mouse1);
+
+        System.out.println();
+
+        Monitor monitor1 = new Monitor("HPI", "V-Line 2000", 4333.44);
+        System.out.println(monitor1);
+
+        System.out.println();
+
+        Keyboard keyboard1 = new Keyboard("AAA", "BBB", 34, KeyboardLayout.QWERTY);
+        System.out.println(keyboard1);
     }
 }
