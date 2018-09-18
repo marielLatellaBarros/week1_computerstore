@@ -12,13 +12,12 @@ public class ComputerComponent {
         this.vendor = vendor;
         this.name = name;
         this.price = price;
-        this.articleNumber = createArticleNumber(vendor);
+        createAndSetArticleNumber(vendor);
     }
 
     public String getVendor() {
         return vendor;
     }
-
 
     public String getName() {
         return name;
@@ -36,18 +35,15 @@ public class ComputerComponent {
         this.price = price;
     }
 
-    public String createArticleNumber(String vendor) {
-        this.articleNumber = vendor.substring(0, 3).toUpperCase();
+    private void createAndSetArticleNumber(String vendor) {
 
-
-        while (this.articleNumber.length() < 3) {
-            this.articleNumber += "X";
+        while (vendor.length() < 3) {
+            vendor += "X";
         }
 
+        this.articleNumber = vendor.substring(0, 3).toUpperCase();
+
         this.articleNumber += "-" + createRandomNumber();
-
-
-        return this.articleNumber;
     }
 
     private String createRandomNumber() {
@@ -56,10 +52,21 @@ public class ComputerComponent {
         String finalRandom = Integer.toString(articleRand);
 
         while (finalRandom.length() < 4) {
-
             finalRandom = "0" + finalRandom;
         }
 
         return finalRandom;
+    }
+
+    @Override
+    public String toString() {
+        return name + " (" + articleNumber + ") ";
+    }
+
+    public void getFullDescription() {
+        System.out.printf("ArticleNumber = %s %n" +
+                "Vendor = %s %n" +
+                "Name = %s %n" +
+                "Price = %.2f %n", this.articleNumber, this.vendor, this.name, this.price);
     }
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <excludeFromCompile>
+      <directory url="file://$PROJECT_DIR$/test" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/src/be/pxl/computerstore/data" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/src/be/pxl/computerstore/gui" includeSubdirectories="true" />
+    </excludeFromCompile>
+  </component>
+</project>
